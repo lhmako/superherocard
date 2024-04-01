@@ -1,4 +1,4 @@
-package app.lhmako.superherocard.ui.theme
+package app.lhmako.ui.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -14,6 +14,13 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import app.lhmako.superherocard.ui.theme.Pink40
+import app.lhmako.superherocard.ui.theme.Pink80
+import app.lhmako.superherocard.ui.theme.Purple40
+import app.lhmako.superherocard.ui.theme.Purple80
+import app.lhmako.superherocard.ui.theme.PurpleGrey40
+import app.lhmako.superherocard.ui.theme.PurpleGrey80
+import app.lhmako.superherocard.ui.theme.Typography
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
