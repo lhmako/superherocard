@@ -10,4 +10,10 @@ enum class ImageExtensionType(val ext: String) {
     fun isEmpty(): Boolean {
         return this == NAN
     }
+
+    companion object {
+        infix fun alias(alias: String): ImageExtensionType = entries.firstOrNull {
+            it.ext == alias
+        } ?: NAN
+    }
 }

@@ -10,12 +10,12 @@ class ComicBusinessLogic(
     private val messages: IMessagesAdapter
 ) : IComicBusinessLogic {
     override operator fun invoke(comic: ComicModel): Result<ComicModel> {
-        return if (comic.image.isPathValidated())
-            Result.failure(Throwable(messages.imagePathMalformed(comic.image.path)))
-        else if (comic.isEmpty()) {
+        return if (comic.isEmpty())
             Result.failure(Throwable(messages.comicNotFound))
+        else if (!comic.image.isPathValidated()) {
+            Result.failure(Throwable(messages.imagePathMalformed(comic.image.path)))
         } else
-            Result.failure(Throwable())
+            Result.success(comic)
     }
 
 }

@@ -10,31 +10,47 @@ import org.junit.Test
 class ImageModelRulesUnitTest {
 
     @Test
-    fun test_business_is_empty() {
-        val modelList = arrayOf(
-            ImageModel(
-                id = ID(""),
-                path = "creating a path",
-                extension = ImageExtensionType.JPG
-            ),
-            ImageModel(
-                id = ID("12345"),
-                path = "",
-                extension = ImageExtensionType.JPG
-            ),
-            ImageModel(
-                id = ID("12345"),
-                path = "creating a path",
-                extension = ImageExtensionType.NAN
-            )
+    fun `test image rule is id isEmpty`() {
+        val model = ImageModel(
+            id = ID(""),
+            path = "creating a path",
+            extension = ImageExtensionType.JPG
         )
-        modelList.forEach { model ->
-            assertTrue(model.isEmpty())
-        }
+        assertTrue(model.isEmpty())
     }
 
     @Test
-    fun test_business_is_not_empty() {
+    fun `test image rule is path isEmpty`() {
+        val model = ImageModel(
+            id = ID("123456"),
+            path = "",
+            extension = ImageExtensionType.JPG
+        )
+        assertTrue(model.isEmpty())
+    }
+
+    @Test
+    fun `test image rule is extension isEmpty`() {
+        val model = ImageModel(
+            id = ID("123456"),
+            path = "creating a path",
+            extension = ImageExtensionType.NAN
+        )
+        assertTrue(model.isEmpty())
+    }
+
+    @Test
+    fun `test image rule isEmpty`() {
+        val model = ImageModel(
+            id = ID(""),
+            path = "",
+            extension = ImageExtensionType.NAN
+        )
+        assertTrue(model.isEmpty())
+    }
+
+    @Test
+    fun `test image rule not isEmpty`() {
         val model = ImageModel(
             id = ID(12345),
             path = "creating a path",
@@ -43,9 +59,8 @@ class ImageModelRulesUnitTest {
         assertFalse(model.isEmpty())
     }
 
-
     @Test
-    fun test_business_is_path_is_valid() {
+    fun `test image rule is path isPathValidated`() {
         val model = ImageModel(
             id = ID(12345),
             path = "https://tzgvp7n8bz3v-u4239.pressidiumcdn.com/wp-content/uploads/2022/08/holafly-logo.svg",
@@ -55,7 +70,7 @@ class ImageModelRulesUnitTest {
     }
 
     @Test
-    fun test_business_is_path_is_not_validated() {
+    fun `test image rule is path not isPathValidated`() {
         val model = ImageModel(
             id = ID(12345),
             path = "creating a path",

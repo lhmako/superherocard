@@ -11,4 +11,6 @@ java {
 dependencies {
     implementation(libs.junit)
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 }

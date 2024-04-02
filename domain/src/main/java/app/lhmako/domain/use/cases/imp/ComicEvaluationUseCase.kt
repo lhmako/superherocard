@@ -7,7 +7,6 @@ import app.lhmako.domain.use.cases.IComicEvaluationUseCase
 class ComicEvaluationUseCase(
     private val comicBusinessLogic: IComicBusinessLogic
 ) : IComicEvaluationUseCase {
-
     override fun invoke(comic: ComicModel): Result<ComicModel> {
         return comicBusinessLogic(comic)
     }
