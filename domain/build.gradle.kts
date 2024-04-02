@@ -9,5 +9,6 @@ java {
 }
 
 dependencies {
+    implementation(libs.junit)
     testImplementation(libs.junit)
 }
