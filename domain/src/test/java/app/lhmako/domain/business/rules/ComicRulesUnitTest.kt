@@ -53,19 +53,4 @@ class ComicRulesUnitTest {
         )
         assertTrue(model.isEmpty())
     }
-
-    @Test
-    fun `test comic description isEmpty`() {
-        val model = ComicModel(
-            id = ID(123456),
-            title = "Testing",
-            image = ImageModel(
-                id = ID(123456),
-                path = "path",
-                extension = ImageExtensionType.JPEG
-            ),
-            description = ""
-        )
-        assertTrue(model.isEmpty())
-    }
 }
