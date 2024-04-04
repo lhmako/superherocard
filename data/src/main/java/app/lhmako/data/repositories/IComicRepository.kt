@@ -6,4 +6,7 @@ import java.sql.Timestamp
 
 interface IComicRepository {
     suspend fun getAll(): Result<List<ComicDTO>>
+    suspend fun getBy(id: String): Result<ComicDTO>
+
+    suspend fun searchBy(text: String): Result<List<ComicDTO>>
 }

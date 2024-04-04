@@ -7,6 +7,6 @@ import app.lhmako.ui.pages.comic.list.viewmodel.IComicsStoryAdapter
 class AppResourcesAdapter(
     private val appDependencies: AppDependencies
 ) : IAppResourcesAdapter {
-    override val comicsDataAdapter: IComicsStoryAdapter
+    override val comicsStoryAdapter: IComicsStoryAdapter
         get() = appDependencies.comicsDataAdapter
 }

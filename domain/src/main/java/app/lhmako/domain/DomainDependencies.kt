@@ -4,7 +4,9 @@ import app.lhmako.domain.adapters.IComicDataAdapter
 import app.lhmako.domain.adapters.IMessagesAdapter
 import app.lhmako.domain.business.logic.IComicBusinessLogic
 import app.lhmako.domain.business.logic.imp.ComicBusinessLogic
+import app.lhmako.domain.stories.IComicOverviewStory
 import app.lhmako.domain.stories.IComicsListStory
+import app.lhmako.domain.stories.imp.ComicOverviewStory
 import app.lhmako.domain.stories.imp.ComicsListStory
 import app.lhmako.domain.use.cases.IComicEvaluationUseCase
 import app.lhmako.domain.use.cases.ILoadComicsListUseCase
@@ -36,6 +38,13 @@ class DomainDependencies(
         ComicsListStory(
             comicDataAdapter = comicDataAdapter,
             comicsListUseCase = comicsListUseCase,
+            comicEvaluationUseCase = comicEvaluationUseCase
+        )
+    }
+
+    val comicOverviewStory: IComicOverviewStory by lazy {
+        ComicOverviewStory(
+            dataAdapter = comicDataAdapter,
             comicEvaluationUseCase = comicEvaluationUseCase
         )
     }

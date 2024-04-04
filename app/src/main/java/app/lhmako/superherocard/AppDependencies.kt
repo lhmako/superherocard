@@ -5,9 +5,11 @@ import app.lhmako.data.DataDependencies
 import app.lhmako.domain.DomainDependencies
 import app.lhmako.domain.adapters.IComicDataAdapter
 import app.lhmako.superherocard.adapters.comic.ComicDataAdapter
+import app.lhmako.superherocard.adapters.comic.ComicOverviewStoryAdapter
 import app.lhmako.superherocard.adapters.comic.ComicsStoryAdapter
 import app.lhmako.superherocard.adapters.messages.MessagesAdapter
 import app.lhmako.ui.pages.comic.list.viewmodel.IComicsStoryAdapter
+import app.lhmako.ui.pages.comic.overview.viewmodel.IComicOverviewStoryAdapter
 
 /**
  * The injections files instantiate the classes, providing a practical context for their operation.
@@ -25,4 +27,9 @@ class AppDependencies(context: Context) {
     }
     val comicsDataAdapter: IComicsStoryAdapter
         get() = ComicsStoryAdapter(domainDependencies.comicsListStory)
+
+    val comicsOverviewStoryAdapter: IComicOverviewStoryAdapter
+        get() = ComicOverviewStoryAdapter(
+            domainDependencies.comicOverviewStory
+        )
 }

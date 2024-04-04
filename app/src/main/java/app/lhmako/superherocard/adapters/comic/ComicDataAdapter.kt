@@ -17,13 +17,13 @@ class ComicDataAdapter(
             list.add(
                 ComicModel(
                     id = ID(comicDTO.id),
-                    title = comicDTO.title,
+                    title = comicDTO.title ?: "",
                     image = ImageModel(
                         ID(comicDTO.id),
-                        path = comicDTO.thumbnail.path,
-                        extension = ImageExtensionType alias comicDTO.thumbnail.extension
+                        path = comicDTO.thumbnail.path ?: "",
+                        extension = ImageExtensionType alias (comicDTO.thumbnail.extension ?: "")
                     ),
-                    description = comicDTO.description
+                    description = comicDTO.description ?: ""
                 )
             )
         }

@@ -15,8 +15,8 @@ class AppNavigation(
         navController.navigate(AppRoute.ONBOARDING.route)
     }
 
-    override fun navigateToComic() {
-        navController.navigate(AppRoute.COMIC.route)
+    override fun navigateToComic(id: String) {
+        navController.navigate(AppRoute.COMIC.route.replace("{id}", id))
     }
 
     override fun navigateToComics() {

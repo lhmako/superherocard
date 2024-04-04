@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavBackStackEntry
 import app.lhmako.ui.R
 import app.lhmako.ui.guideline.buttons.PrimaryButton
 import app.lhmako.ui.guideline.theme.Brown
@@ -36,7 +37,7 @@ class OnboardingPage(
 ) : IAppPage {
 
     @Composable
-    override operator fun invoke() {
+    override operator fun invoke(backStackEntry: NavBackStackEntry) {
         Column(
             Modifier
                 .fillMaxHeight()

@@ -16,7 +16,7 @@ class ComicsViewModel(
             return mComics
         }
 
-    fun loadComics() {
+    private fun loadComics() {
         launch {
             val result = comicsViewModelAdapter.loadComics().getOrThrow()
             mComics.postValue(result)

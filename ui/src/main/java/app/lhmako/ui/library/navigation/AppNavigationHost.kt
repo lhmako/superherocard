@@ -32,7 +32,7 @@ fun AppNavHost(
 
 fun NavGraphBuilder.composable(
     appPage: IAppPage,
-    content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit = { appPage() }
+    content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit = { appPage(it) }
 ) {
     composable(appPage.route.route, content = content)
 }

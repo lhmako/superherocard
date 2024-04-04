@@ -14,7 +14,9 @@ class ComicRetrofitRepository(
     private val apiDataConfig: IApiDataConfig
 ) : IComicRepository {
 
+    private var comics = mutableListOf<ComicDTO>()
     override suspend fun getAll(): Result<List<ComicDTO>> {
+        if (comics.isNotEmpty()) return Result.success(comics)
         return runBlocking(Dispatchers.IO) {
             try {
                 val credentials = apiDataConfig.getCredentials().getOrThrow()
@@ -27,6 +29,29 @@ class ComicRetrofitRepository(
             } catch (e: HttpException) {
                 Result.failure(e)
             }
+        }
+    }
+
+    override suspend fun getBy(id: String): Result<ComicDTO> {
+        val comicDTO = getAll().getOrElse { return Result.failure(it) }.find { it.id == id }
+        return if (comicDTO == null) {
+            Result.failure(Throwable("Comic not found"))
+        } else {
+            Result.success(comicDTO)
+        }
+    }
+
+    override suspend fun searchBy(text: String): Result<List<ComicDTO>> {
+        val founds = mutableListOf<ComicDTO>()
+        getAll().getOrElse { return Result.failure(it) }.forEach { comicDTO ->
+            if (comicDTO.title?.startsWith(text) == true) {
+                founds.add(comicDTO)
+            }
+        }
+        return if (founds.isNotEmpty()) {
+            Result.failure(Throwable("Comic not found"))
+        } else {
+            Result.success(founds)
         }
     }
 

@@ -14,7 +14,7 @@ import app.lhmako.data.retrofit.rest.ComicRetrofitRepository
 
 class DataDependencies(context: Context) {
 
-    private val endpoint = Endpoint.PostmanMocking
+    private val endpoint = Endpoint.Marvel
 
     private val retrofitAdapter by lazy {
         when (endpoint.url) {
