@@ -1,4 +1,4 @@
-package app.lhmako.superherocard.ui.theme
+package app.lhmako.ui.guideline.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package app.lhmako.superherocard.ui.theme
+package app.lhmako.ui.guideline.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
