@@ -8,8 +8,8 @@ import java.io.InputStreamReader
 
 class ApiDataConfig(
     private val context: Context
-) {
-    fun getCredentials(): Result<ApiCredentialDTO> {
+): IApiDataConfig {
+    override fun getCredentials(): Result<ApiCredentialDTO> {
         return try {
             val file = context.assets.open("env.json")
             val bufferedReader = BufferedReader(InputStreamReader(file))
