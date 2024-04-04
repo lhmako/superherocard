@@ -12,7 +12,8 @@ import app.lhmako.domain.use.cases.imp.ComicEvaluationUseCase
 import app.lhmako.domain.use.cases.imp.LoadComicsListUseCase
 
 /**
- * The injections files instantiate the classes, providing a practical context for their operation. In a real-world scenario, these could be replaced with a dependency injection library like Dagger or Koin for more streamlined management.
+ * The injections files instantiate the classes, providing a practical context for their operation.
+ * In a real-world scenario, these could be replaced with a dependency injection library like Dagger or Koin for more streamlined management.
  */
 class DomainDependencies(
     messagesAdapter: IMessagesAdapter,

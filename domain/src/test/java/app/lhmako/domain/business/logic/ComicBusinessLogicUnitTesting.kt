@@ -10,7 +10,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-import java.lang.RuntimeException
 
 class ComicBusinessLogicUnitTesting {
 
@@ -39,7 +38,7 @@ class ComicBusinessLogicUnitTesting {
         result.onFailure { error ->
             assertEquals(error.message, messagesAdapter.imagePathMalformed(model.image.path))
         }
-        result.onSuccess { throw RuntimeException("Comic model is empty.") }
+        result.onSuccess { throw Exception("Comic model is empty.") }
     }
 
     @Test
@@ -58,7 +57,7 @@ class ComicBusinessLogicUnitTesting {
         result.onFailure { error ->
             assertEquals(error.message, messagesAdapter.comicNotFound)
         }
-        result.onSuccess { throw RuntimeException("Path is not validated.") }
+        result.onSuccess { throw Exception("Path is not validated.") }
     }
 
     @Test

@@ -11,15 +11,11 @@ class AppPageFactory(
     private val appNavigationFactory: IAppNavigationFactory,
     private val appResources: IAppResourcesAdapter
 ) {
-
-    operator fun invoke(appRoute: AppRoute): IAppPage {
-        return when (appRoute) {
-            AppRoute.ONBOARDING -> OnboardingPage(appNavigationFactory = appNavigationFactory)
-            AppRoute.COMIC -> ComicOverviewPage(appNavigationFactory = appNavigationFactory)
-            AppRoute.COMICS -> ComicsPage(
-                appNavigationFactory = appNavigationFactory,
-                comicsViewModel = ComicsViewModel(appResources.comicsDataAdapter)
-            )
-        }
-    }
+    val onboarding: IAppPage get() = OnboardingPage(appNavigationFactory = appNavigationFactory)
+    val comics: IAppPage get() = ComicOverviewPage(appNavigationFactory = appNavigationFactory)
+    val comic: IAppPage
+        get() = ComicsPage(
+            appNavigationFactory = appNavigationFactory,
+            comicsViewModel = ComicsViewModel(appResources.comicsDataAdapter)
+        )
 }

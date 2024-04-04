@@ -63,7 +63,7 @@ class ImageModelRulesUnitTest {
     fun `test image rule is path isPathValidated`() {
         val model = ImageModel(
             id = ID(12345),
-            path = "https://tzgvp7n8bz3v-u4239.pressidiumcdn.com/wp-content/uploads/2022/08/holafly-logo.svg",
+            path = "https://i.pravatar.cc/150?img=10",
             extension = ImageExtensionType.JPG
         )
         assertTrue(model.isPathValidated())
