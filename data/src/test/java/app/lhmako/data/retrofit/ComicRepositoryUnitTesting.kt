@@ -44,12 +44,11 @@ class ComicRepositoryUnitTesting {
     fun `test get all comics from postman`(): Unit = runBlocking {
         launch(Dispatchers.Main) {
             val retrofitPostmanMock = RetrofitBuilderAdapter(Endpoint.PostmanMocking).build()
-            val comicRepository: IComicRepository = ComicRetrofitRepository(retrofitPostmanMock)
-            val comics = comicRepository.getAll(
-                timestamp = 1000,
-                publicKey = "xyz",
-                hash = "abc1234"
-            ).getOrThrow()
+            val comicRepository: IComicRepository = ComicRetrofitRepository(
+                retrofitPostmanMock,
+                ApiDataConfigMock()
+            )
+            val comics = comicRepository.getAll().getOrThrow()
             assertEquals(10, comics.size)
         }
     }
