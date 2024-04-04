@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.rememberNavController
 import app.lhmako.ui.guideline.theme.SuperHeroCardTheme
+import app.lhmako.ui.guideline.theme.Yellow
 import app.lhmako.ui.library.activities.AppActivity
 import app.lhmako.ui.library.navigation.AppNavHost
 import app.lhmako.ui.library.navigation.factory.IAppNavigationFactory
@@ -29,7 +31,9 @@ class MainActivity : AppActivity() {
             SuperHeroCardTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Yellow),
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
