@@ -10,7 +10,11 @@ class ComicsViewModel(
 ) : AppViewModel() {
 
     private val mComics = MutableLiveData<List<ComicDTO>>()
-    val comics: LiveData<List<ComicDTO>> get() = mComics
+    val comics: LiveData<List<ComicDTO>>
+        get() {
+            if (mComics.value == null) loadComics()
+            return mComics
+        }
 
     fun loadComics() {
         launch {

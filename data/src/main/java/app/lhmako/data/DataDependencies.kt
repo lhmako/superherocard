@@ -14,17 +14,21 @@ import app.lhmako.data.retrofit.rest.ComicRetrofitRepository
 
 class DataDependencies(context: Context) {
 
-    private val retrofitPostmanMock by lazy {
-        RetrofitBuilderAdapter(Endpoint.PostmanMocking).build()
-    }
+    private val endpoint = Endpoint.PostmanMocking
 
-    private val retrofitMarvelApi by lazy {
-        RetrofitBuilderAdapter(Endpoint.PostmanMocking).build()
+    private val retrofitAdapter by lazy {
+        when (endpoint.url) {
+            Endpoint.Marvel.url -> RetrofitBuilderAdapter(Endpoint.Marvel).build()
+            Endpoint.PostmanMocking.url -> RetrofitBuilderAdapter(Endpoint.PostmanMocking).build()
+            else -> {
+                throw Exception("Endpoint $endpoint not found")
+            }
+        }
     }
 
     private val apiDataConfig by lazy { ApiDataConfig(context) }
 
     val comicRepository: IComicRepository by lazy {
-        ComicRetrofitRepository(retrofitPostmanMock, apiDataConfig)
+        ComicRetrofitRepository(retrofitAdapter, apiDataConfig)
     }
 }
