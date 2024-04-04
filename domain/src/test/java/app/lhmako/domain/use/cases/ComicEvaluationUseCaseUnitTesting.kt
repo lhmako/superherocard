@@ -33,7 +33,7 @@ class ComicEvaluationUseCaseUnitTesting {
     fun `test comic evaluation is correct evaluated`() {
         val comic = ComicModelMocks.comics[0]
         val nComic = comicEvaluationUseCase(comic = comic).getOrThrow()
-        Assert.assertEquals(comic, nComic)
+        assertEquals(comic, nComic)
     }
 
     @Test
@@ -52,7 +52,7 @@ class ComicEvaluationUseCaseUnitTesting {
             assertEquals(messagesAdapter.comicNotFound, error.message)
         }
         comicEvaluationUseCase(comic = comic).onSuccess {
-            throw RuntimeException("Comic is not empty")
+            throw Exception("Comic is not empty")
         }
     }
 
@@ -72,7 +72,7 @@ class ComicEvaluationUseCaseUnitTesting {
             assertEquals(messagesAdapter.comicNotFound, error.message)
         }
         comicEvaluationUseCase(comic = comic).onSuccess {
-            throw RuntimeException("Comic is not empty")
+            throw Exception("Comic is not empty")
         }
     }
 }
