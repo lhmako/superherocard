@@ -16,5 +16,4 @@ class ComicOverviewStory(
         return comicEvaluationUseCase(comic)
     }
 
-
 }

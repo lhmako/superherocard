@@ -69,7 +69,7 @@ class ComicOverviewPage(
             }
 
             PrimaryButton(
-                text = stringResource(id = R.string.start),
+                text = stringResource(id = R.string.back),
                 modifier = Modifier
                     .padding(vertical = 5.dp)
                     .width(200.dp)

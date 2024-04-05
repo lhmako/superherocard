@@ -31,24 +31,22 @@ class ComicDataAdapter(
     }
 
     override suspend fun getComicBy(id: ID): Result<ComicModel> {
+        val comicDTO = comicRepository.getBy(id.id).getOrElse { return Result.failure(it) }
         return Result.success(
             ComicModel(
-                ID(""),
-                "",
-                ImageModel(ID(""), "", ImageExtensionType.JPG),
-                ""
+                id = id,
+                title = comicDTO.title ?: "",
+                image = ImageModel(
+                    ID(comicDTO.id),
+                    path = comicDTO.thumbnail.path ?: "",
+                    extension = ImageExtensionType alias (comicDTO.thumbnail.extension ?: "")
+                ),
+                description = comicDTO.description ?: ""
             )
         )
     }
 
     override suspend fun searchComicBy(text: String): Result<ComicModel> {
-        return Result.success(
-            ComicModel(
-                ID(""),
-                "",
-                ImageModel(ID(""), "", ImageExtensionType.JPG),
-                ""
-            )
-        )
+        throw Exception("Not implemented yet")
     }
 }

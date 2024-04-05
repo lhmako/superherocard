@@ -14,9 +14,9 @@ class ComicRetrofitRepository(
     private val apiDataConfig: IApiDataConfig
 ) : IComicRepository {
 
-    private var comics = mutableListOf<ComicDTO>()
+    private var comicsCache = mutableListOf<ComicDTO>()
     override suspend fun getAll(): Result<List<ComicDTO>> {
-        if (comics.isNotEmpty()) return Result.success(comics)
+        if (comicsCache.isNotEmpty()) return Result.success(comicsCache)
         return runBlocking(Dispatchers.IO) {
             try {
                 val credentials = apiDataConfig.getCredentials().getOrThrow()
@@ -25,6 +25,7 @@ class ComicRetrofitRepository(
                     credentials.publicKey,
                     credentials.hash()
                 ).data.results
+                comicsCache = comics.toMutableList()
                 Result.success(comics)
             } catch (e: HttpException) {
                 Result.failure(e)

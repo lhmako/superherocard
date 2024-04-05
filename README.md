@@ -1,4 +1,5 @@
 # Proposed Architecture for Interview Assessment
+
 ## Overview
 
 The application has been restructured to utilize a modular architecture, where each module is a distinct library, either in Android or Kotlin. These modules are designed with specific responsibilities and incorporate various architectural patterns to ensure clean, maintainable code throughout.
@@ -19,5 +20,15 @@ The Domain module is charged with overseeing all business logic and data-related
 ### DATA
 The Data module is responsible for handling all data sources and exposes the data through a repository pattern.
 
-# Notice
-The injections files instantiate the classes, providing a practical context for their operation. In a real-world scenario, these could be replaced with a dependency injection library like Dagger or Koin for more streamlined management.
+# Notes
+* The injections files instantiate the classes, providing a practical context for their operation. In a real-world scenario, these could be replaced with a dependency injection library like Dagger or Koin for more streamlined management.
+* Connect the project with the Marvel API, should be created the env.json file in the folder {Project folder}/data/src/main/assets with the structure:
+```json
+{
+  "timestamp": 0,
+  "publicKey": "",
+  "privateKey": ""
+}
+```
+* The following test [ComicRepositoryUnitTesting](/data/src/test/java/app/lhmako/data/retrofit/ComicRepositoryUnitTesting.kt) creates a request to get the data from a Postman mock service. It could be fail if the requests quote is exceeded the
+* To download the [Super Hero Card apk](https://drive.google.com/file/d/1Fgr1c6V6K8Uj_G79xRrxdT1PuvkI5Kp5/view?usp=sharing)
