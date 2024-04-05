@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="comic_list_empty">Comics not found</string>
+    <string name="comic_not_found">Comics not found</string>
+    <string name="image_path_malformed">Malformed image path %s</string>
+</resources>
